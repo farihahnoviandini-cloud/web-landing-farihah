@@ -65,45 +65,73 @@ body {
     text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
 }
 
-/* 3. HERO SECTION DENGAN ANIMASI FADE-IN */
+/* 3. HERO SECTION DENGAN MOTIF ESTETIK & CAHAYA NEON */
 .hero {
-    background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('../images/profile.jpg') no-repeat center center/cover;
-    padding: 120px 0;
+    position: relative;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    padding: 130px 20px;
     text-align: center;
+    overflow: hidden;
     animation: fadeIn 1.2s ease-in-out;
 }
 
+/* Membuat motif garis cahaya estetik (Glow Ornament) di background */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, transparent 60%);
+    animation: pulseGlow 8s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes pulseGlow {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50% { transform: scale(1.15); opacity: 1; }
+}
+
+/* Efek Cahaya Neon pada Tulisan Selamat Datang */
 .hero h1 {
-    font-size: 38px;
-    margin-bottom: 12px;
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 14px;
     color: #ffffff;
-    animation: slideDown 0.8s ease-out;
+    text-shadow: 0 0 25px rgba(56, 189, 248, 0.5), 0 0 10px rgba(56, 189, 248, 0.3);
+    animation: slideDown 1s ease-out;
+    position: relative;
+    z-index: 1;
 }
 
 .hero p {
     font-size: 17px;
     color: #94a3b8;
-    max-width: 600px;
-    margin: 0 auto 25px auto;
-    animation: slideUp 0.8s ease-out;
+    margin-bottom: 30px;
+    animation: fadeIn 1.5s ease-in-out;
+    position: relative;
+    z-index: 1;
 }
 
-.btn-cta {
+/* Tombol CTA Menyala */
+.hero .btn-cta, .hero a.btn {
     display: inline-block;
-    background-color: #2563eb;
+    padding: 12px 30px;
+    background: linear-gradient(135deg, #38bdf8 0%, #2563eb 100%);
     color: #ffffff;
-    padding: 12px 28px;
-    text-decoration: none;
     border-radius: 30px;
-    font-weight: bold;
-    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4);
     transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
 }
 
-.btn-cta:hover {
-    background-color: #1d4ed8;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.6);
+.hero .btn-cta:hover, .hero a.btn:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 8px 30px rgba(56, 189, 248, 0.7);
 }
 
 /* 4. SECTION PROFIL & TATA LETAK FOTO */
@@ -151,7 +179,9 @@ body {
 }
 
 .profile-wrapper:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
+    border-color: rgba(56, 189, 248, 0.5);
+    box-shadow: 0 15px 40px rgba(56, 189, 248, 0.2);
 }
 
 /* Kunci Pengaturan Foto Diri & Animasi Hover */
